@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -37,19 +37,17 @@ jobs:
         id: check_changes
         run: |
           changes=$(git diff --name-only)
-          if [ -n "$changes" ]; then
-            echo "::set-output name=changes::true"
-          else
-            echo "::set-output name=changes::false"
-          fi
+          echo "CHANGES=$changes" >> $GITHUB_ENV
+
       
       - name: Commit changes
-        if: steps.check_changes.outputs.changes == 'true'
+        if: env.CHANGES != ''
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "Apply linting and formatting changes"
-        
+          git push
+    
       - name: Test with pytest
         run: pytest
