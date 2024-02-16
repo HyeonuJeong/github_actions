@@ -6,6 +6,6 @@ def sum_even_numbers(numbers: Iterable[int]) -> int:
     return the sum of all even numbers in the iterable."""
     return sum(num for num in numbers if num % 2 == 0)
 
-
-if __name__ == "__main__":
-    print(sum_even_numbers(1234))
+def test_sum_even_numbers(numbers: Iterable[int]) -> int:
+    
+    assert sum_even_numbers([2,4]) == 3
