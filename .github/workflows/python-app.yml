@@ -27,7 +27,8 @@ jobs:
           pip install -r requirements.txt
       - name: Lint & format with Ruff
         run: |
-          ruff --output-format=github .
+          ruff check . --fix
+          ruff format .
         continue-on-error: true  
       - name: Test with pytest
         run: |
