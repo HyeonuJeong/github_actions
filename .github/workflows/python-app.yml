@@ -47,7 +47,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "Apply linting and formatting changes"
-          git push
+          git push origin HEAD:${GITHUB_REF}
     
       - name: Test with pytest
         run: pytest
