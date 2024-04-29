@@ -38,7 +38,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --name-only
+          echo "::set-output name=changed::$(git diff --name-only)"
 
       - name: Commit changes
         if: steps.check_changes.outputs.changed != ''
