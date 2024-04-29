@@ -3,3 +3,4 @@ ruff
 isort
 uvicorn
 fastapi
+httpx
