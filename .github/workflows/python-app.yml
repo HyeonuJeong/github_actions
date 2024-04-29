@@ -38,11 +38,10 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          changes=$(git diff --name-only)
-          echo "CHANGES=$changes" >> $GITHUB_ENV
+          git diff --name-only
 
       - name: Commit changes
-        if: ${{ env.CHANGES }} != ''
+        if: steps.check_changes.outputs.changed != ''
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
