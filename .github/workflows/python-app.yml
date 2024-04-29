@@ -38,10 +38,10 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          echo "::set-output name=changed::$(git diff --name-only)"
+          echo "::set-env name=CHANGED_FILES::$(git diff --name-only)"
 
       - name: Commit changes
-        if: steps.check_changes.outputs.changed != ''
+        if: env.CHANGED_FILES != ''
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
