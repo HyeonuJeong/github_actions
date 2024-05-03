@@ -3,8 +3,6 @@ import os
 
 import uvicorn
 from fastapi import FastAPI
-import os
-import asyncio
 
 app = FastAPI()
 
@@ -16,7 +14,6 @@ async def read_item(item_id):
 
 
 async def execute_build_script(version):
-    
     # 빌드 스크립트 실행
     root = os.path.dirname(__file__)
     build_file = os.path.join(root, "build.sh")
@@ -32,8 +29,9 @@ async def update_version(version):
     print(f"Received request for version: {version}")
 
     asyncio.create_task(execute_build_script(version))
-    
+
     return "build finish"
+
 
 if __name__ == "__main__":
     root = os.path.dirname(__file__)
