@@ -9,7 +9,7 @@ sleep 3
 SCRIPT_DIR=$(dirname "$0")
 cd $SCRIPT_DIR
 
-
+git checkout main
 git pull
 sleep 3
 git checkout $1
