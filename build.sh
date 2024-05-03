@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pid=$(lsof -ti :7070)
 
 kill -9 $pid
@@ -10,3 +11,7 @@ git pull
 git checkout $1
 
 python main.py
+=======
+
+sh stop.sh
+>>>>>>> de516b154019a056a5beb4498d62ac40a9b2b348
