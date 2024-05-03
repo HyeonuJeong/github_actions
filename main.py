@@ -17,7 +17,7 @@ async def execute_build_script(version):
     build_file = os.path.join(os.path.dirname(__file__), "build.sh")
     process = await asyncio.create_subprocess_shell(f"sh {build_file} {version}")
     await process.wait()
-    
+
 
 @app.get("/build/{version}")
 async def update_version(version):
