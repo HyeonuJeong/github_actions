@@ -1,7 +1,8 @@
+import asyncio
+import os
+
 import uvicorn
 from fastapi import FastAPI
-import os
-import asyncio
 
 app = FastAPI()
 
@@ -32,8 +33,9 @@ async def update_version(version):
     # process = await asyncio.create_subprocess_shell(f"sh {build_file}")
     # await process.wait()
     asyncio.create_task(execute_build_script())
-    
+
     return "build finish"
+
 
 if __name__ == "__main__":
     root = os.path.dirname(__file__)
