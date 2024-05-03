@@ -22,7 +22,7 @@ async def execute_build_script(version):
 @app.get("/build/{version}")
 async def update_version(version):
     asyncio.create_task(execute_build_script(version))
-    return f"Received request for version:{version}"
+    return f"Received request for version: {version}"
 
 
 if __name__ == "__main__":
